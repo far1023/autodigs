@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Access\PermissionController;
+use App\Http\Controllers\Access\PermitGrantingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -44,7 +45,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::group(['middleware' => ['permission:access control-room']], function () {
         Route::prefix('controls')->group(function () {
-            Route::get('/role', [RoleController::class, 'index'])->middleware('can:show role')->name('role.index');
+            Route::get('/role', [RoleController::class, 'index'])->name('role.index');
             Route::get('/role/tambah', [RoleController::class, 'add'])->middleware('can:add role')->name('role.add');
             Route::get('/role/edit/{role}', [RoleController::class, 'edit'])->middleware('can:edit role')->name('role.edit');
 
@@ -52,7 +53,10 @@ Route::group(['middleware' => ['auth']], function () {
             Route::patch('/role/{role}', [RoleController::class, 'update'])->middleware('can:edit role')->name('role.update');
             Route::delete('/role/{role}', [RoleController::class, 'delete'])->middleware('can:delete role')->name('role.delete');
 
-            Route::get('/permission', [PermissionController::class, 'index'])->middleware('can:show permission')->name('permission.index');
+            Route::get('/role/{id}/grant-permit', [PermitGrantingController::class, 'edit'])->middleware('can:grant permit')->name('role.show-permit');
+            Route::patch('/role/{role}/grant-permit', [PermitGrantingController::class, 'update'])->middleware('can:grant permit')->name('role.grant-permit');
+
+            Route::get('/permission', [PermissionController::class, 'index'])->name('permission.index');
             Route::get('/permission/tambah', [PermissionController::class, 'add'])->middleware('can:add permission')->name('permission.add');
             Route::get('/permission/edit/{permission}', [PermissionController::class, 'edit'])->middleware('can:edit permission')->name('permission.edit');
 

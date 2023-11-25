@@ -24,6 +24,10 @@
     <x-adminlte-modal id="modalFormRole">
         <div id="formRoleComponent" class="pb-2"></div>
     </x-adminlte-modal>
+
+    <x-adminlte-modal id="modalFormPermitGranting" size="lg">
+        <div id="formPermitGrantingComponent" class="pb-2"></div>
+    </x-adminlte-modal>
 @stop
 
 @section('css')
@@ -40,6 +44,10 @@
 
         $("#modalFormUser").on('hide.bs.modal', function() {
             $("#formRoleComponent").html("");
+        });
+
+        $("#modalFormPermitGranting").on('hide.bs.modal', function() {
+            $("#formPermitGrantingComponent").html("");
         });
 
         $(document).ready(function() {
@@ -68,6 +76,25 @@
                 },
                 error: function(err) {
                     $("#formRoleComponent").html("Terjadi kesalahan")
+                    console.error(err);
+                }
+            })
+        }
+
+        const renderPermit = (url) => {
+            $.ajax({
+                type: "GET",
+                url: "{{ url('/controls/role') }}" + url,
+                beforeSend: function() {
+                    $("#formPermitGrantingComponent").html(
+                        "<span class='spinner-border spinner-border-sm'></span> Memuat..."
+                    );
+                },
+                success: function(res) {
+                    $("#formPermitGrantingComponent").html(res);
+                },
+                error: function(err) {
+                    $("#formPermitGrantingComponent").html("Terjadi kesalahan")
                     console.error(err);
                 }
             })

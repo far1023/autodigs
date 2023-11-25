@@ -4,6 +4,7 @@
             <tr>
                 <th>#</th>
                 <th>Nama Role</th>
+                <th>Permissions</th>
                 <th></th>
             </tr>
         </thead>
@@ -40,6 +41,10 @@
                 {
                     data: 'name',
                     name: 'name',
+                },
+                {
+                    data: 'permissions',
+                    name: 'permissions',
                 },
                 {
                     data: 'actions',

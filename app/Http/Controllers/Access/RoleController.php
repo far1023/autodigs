@@ -18,10 +18,16 @@ class RoleController extends Controller
             $roles = Role::where('name', '!=', 'super-admin')->get();
 
             return DataTables::of($roles)
+                ->addColumn('permissions', function ($data) {
+                    return count($data->permissions) . " permission(s) granted";
+                })
                 ->addColumn('actions', function ($roles) {
 
                     $actions = "<div class='text-right'>";
 
+                    if (Auth::user()->can('grant permit')) {
+                        $actions .= "<a href='javascript:void(0)' class='btn btn-sm btn-warning mb-1 mr-1 edit' title='Edit data' onclick='renderPermit(\"/" . $roles['id'] . "/grant-permit\")' data-toggle='modal' data-target='#modalFormPermitGranting'><i class='las la-lg la-key'></i></a>";
+                    }
                     if (Auth::user()->can('edit role')) {
                         $actions .= "<a href='javascript:void(0)' class='btn btn-sm btn-secondary mb-1 mr-1 edit' title='Edit data' onclick='render(\"edit\", " . $roles['id'] . ")' data-toggle='modal' data-target='#modalFormRole'>Edit</a>";
                     }
@@ -31,7 +37,7 @@ class RoleController extends Controller
 
                     return $actions .= "</div>";
                 })
-                ->rawColumns(['actions'])
+                ->rawColumns(['permissions', 'actions'])
                 ->addIndexColumn()
                 ->toJson();
         }
