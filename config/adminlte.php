@@ -335,16 +335,12 @@ return [
             'icon'    => 'las la-fw la-id-card',
             'submenu' => [
                 [
-                    'text' => 'Roles',
-                    'url'  => 'controls/role',
-                ],
-                [
                     'text' => 'Permissions',
                     'url'  => 'controls/permission',
                 ],
                 [
-                    'text' => 'Permission Granting',
-                    'url'  => 'controls/permission-granting',
+                    'text' => 'Roles',
+                    'url'  => 'controls/role',
                 ],
             ],
         ]
@@ -522,6 +518,16 @@ return [
                     'type' => 'css',
                     'asset' => true,
                     'location' => 'vendor/line-awesome/css/line-awesome.min.css',
+                ],
+            ],
+        ],
+        'icheck-bootstrap' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/icheck-bootstrap/icheck-bootstrap.min.css',
                 ],
             ],
         ]
