@@ -329,41 +329,22 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],
+        ['header' => 'Control Room'],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'las la-fw la-share',
+            'text'    => 'Access',
+            'icon'    => 'las la-fw la-id-card',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Roles',
+                    'url'  => 'controls/role',
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text' => 'Permissions',
+                    'url'  => 'controls/permission',
                 ],
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Permission Granting',
+                    'url'  => 'controls/permission-granting',
                 ],
             ],
         ]
