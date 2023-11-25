@@ -41,13 +41,13 @@ class RoleController extends Controller
 
     public function add()
     {
-        return view('components.forms.role-add');
+        return view('components.forms.role.role-add');
     }
 
     public function edit(Role $role)
     {
         $data['role'] = $role;
-        return view('components.forms.role-edit', $data);
+        return view('components.forms.role.role-edit', $data);
     }
 
     /**

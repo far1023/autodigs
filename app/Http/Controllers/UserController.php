@@ -48,13 +48,13 @@ class UserController extends Controller
 
     public function add()
     {
-        return view('components.forms.user-add');
+        return view('components.forms.user.user-add');
     }
 
     public function edit(User $user)
     {
         $data['user'] = $user;
-        return view('components.forms.user-edit', $data);
+        return view('components.forms.user.user-edit', $data);
     }
 
     /**
