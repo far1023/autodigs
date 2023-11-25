@@ -233,7 +233,7 @@ return [
     */
 
     'right_sidebar' => false,
-    'right_sidebar_icon' => 'fas fa-cogs',
+    'right_sidebar_icon' => 'las la-cogs',
     'right_sidebar_theme' => 'dark',
     'right_sidebar_slide' => true,
     'right_sidebar_push' => true,
@@ -309,29 +309,29 @@ return [
         [
             'text' => 'Pengguna',
             'url'  => 'pengguna',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'las la-fw la-user',
         ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'las la-fw la-user',
         ],
         [
             'text' => 'change_password',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'las la-fw la-lock',
         ],
         [
             'text'        => 'pages',
             'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'las la-fw la-file',
             'label'       => 4,
             'label_color' => 'success',
         ],
         [
             'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'las la-fw la-share',
             'submenu' => [
                 [
                     'text' => 'level_one',
@@ -519,6 +519,31 @@ return [
                 ],
             ],
         ],
+        'iziToast' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/iziToast/css/iziToast.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/iziToast/js/iziToast.min.js',
+                ],
+            ],
+        ],
+        'line-awesome' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/line-awesome/css/line-awesome.min.css',
+                ],
+            ],
+        ]
     ],
 
     /*

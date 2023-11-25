@@ -37,6 +37,8 @@ $ php artisan serve
 #and pray
 ```
 
+please note this AdminLTE has been configured using [iziToast](https://izitoast.marcelodolza.com/) and [line-awesome](https://icons8.com/line-awesome/howto). If you are planning to use it too, you have to download or install it separately. See how to configure template config [here](https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Plugins-Configuration).
+
 if something goes wrong please visit these awesome projects:
 
 -   [Laravel-AdminLTE](https://github.com/jeroennoten/Laravel-AdminLTE)
