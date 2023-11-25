@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Access\PermissionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -41,7 +42,7 @@ Route::post('/logout', [LogoutController::class, 'run'])->name('user.logout');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/beranda', [BerandaController::class, 'index'])->name('beranda');
 
-    Route::group(['middleware' => ['role:super-admin']], function () {
+    Route::group(['middleware' => ['permission:access control-room']], function () {
         Route::prefix('controls')->group(function () {
             Route::get('/role', [RoleController::class, 'index'])->middleware('can:show role')->name('role.index');
             Route::get('/role/tambah', [RoleController::class, 'add'])->middleware('can:add role')->name('role.add');
@@ -50,6 +51,14 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('/role', [RoleController::class, 'store'])->middleware('can:add role')->name('role.store');
             Route::patch('/role/{role}', [RoleController::class, 'update'])->middleware('can:edit role')->name('role.update');
             Route::delete('/role/{role}', [RoleController::class, 'delete'])->middleware('can:delete role')->name('role.delete');
+
+            Route::get('/permission', [PermissionController::class, 'index'])->middleware('can:show permission')->name('permission.index');
+            Route::get('/permission/tambah', [PermissionController::class, 'add'])->middleware('can:add permission')->name('permission.add');
+            Route::get('/permission/edit/{permission}', [PermissionController::class, 'edit'])->middleware('can:edit permission')->name('permission.edit');
+
+            Route::post('/permission', [PermissionController::class, 'store'])->middleware('can:add permission')->name('permission.store');
+            Route::patch('/permission/{permission}', [PermissionController::class, 'update'])->middleware('can:edit permission')->name('permission.update');
+            Route::delete('/permission/{permission}', [PermissionController::class, 'delete'])->middleware('can:delete permission')->name('permission.delete');
         });
     });
 
