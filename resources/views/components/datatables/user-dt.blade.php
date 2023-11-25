@@ -59,7 +59,7 @@
             ]
         });
 
-        const reload = (ref = null) => {
+        const reloadDT = (ref = null) => {
             (ref) ? $(ref).addClass('icn-spinner'): '';
             $("#userTable").DataTable().ajax.reload(null, false);
         }
@@ -84,7 +84,7 @@
                                 position: 'topCenter'
                             });
 
-                            reload();
+                            reloadDT();
 
                             btn.attr('disabled', false).html(html);
                         } else {

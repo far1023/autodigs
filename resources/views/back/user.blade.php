@@ -9,7 +9,7 @@
 @section('content')
     <x-adminlte-card body-class="px-0" theme-mode="outline">
         <div class="px-3 mb-5">
-            <button onclick="reload(this)" id="reloadBtn" class="btn btn-sm ml-2 float-sm-right"><i
+            <button onclick="reloadDT(this)" id="reloadBtn" class="btn btn-sm ml-2 float-sm-right"><i
                     class="las la-sync la-lg"></i></button>
 
             @can(['add user'])
