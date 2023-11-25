@@ -12,7 +12,7 @@ class StoreRoleRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return Auth::user()->can('edit role');
+        return Auth::user()->can('add role');
     }
 
     /**
