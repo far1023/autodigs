@@ -14,10 +14,9 @@ class UserController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $user = User::find(Auth::user()->id);
-            $data = User::with('roles');
+            $users = User::with('roles');
 
-            return DataTables::of($data->get())
+            return DataTables::of($users->get())
                 ->addColumn('role', function ($s) {
                     $has_roles = [];
 
@@ -26,18 +25,18 @@ class UserController extends Controller
                     }
                     return implode(', ', $has_roles);
                 })
-                ->addColumn('actions', function ($data) use ($user) {
+                ->addColumn('actions', function ($users) {
 
-                    $aksi = "<div class='text-right'>";
+                    $actions = "<div class='text-right'>";
 
-                    if ($user->can('edit user')) {
-                        $aksi .= "<a href='javascript:void(0)' class='btn btn-sm btn-secondary mb-1 mr-1 edit' title='Edit data' onclick='render(\"edit\", " . $data['id'] . ")' data-toggle='modal' data-target='#modalFormUser'>Edit</a>";
+                    if (Auth::user()->can('edit user')) {
+                        $actions .= "<a href='javascript:void(0)' class='btn btn-sm btn-secondary mb-1 mr-1 edit' title='Edit data' onclick='render(\"edit\", " . $users['id'] . ")' data-toggle='modal' data-target='#modalFormUser'>Edit</a>";
                     }
-                    if ($user->can('delete user') && $user->id != $data['id']) {
-                        $aksi .= " <a href='javascript:void(0)' data-id='" . $data['id'] . "' class='btn btn-sm btn-danger mb-1 delete' title='Hapus data'><i class=' las la-times'></i></a>";
+                    if (Auth::user()->can('delete user') && Auth::user()->id != $users['id']) {
+                        $actions .= " <a href='javascript:void(0)' data-id='" . $users['id'] . "' class='btn btn-sm btn-danger mb-1 delete' title='Hapus data'><i class=' las la-times'></i></a>";
                     }
 
-                    return $aksi .= "</div>";
+                    return $actions .= "</div>";
                 })
                 ->rawColumns(['role', 'actions'])
                 ->addIndexColumn()
