@@ -2,15 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreUserRequest;
-use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 
 class UserController extends Controller
 {
+    protected $logging;
+
+    public function __construct()
+    {
+        $this->logging = Log::channel('file');
+    }
+
     public function index(Request $request)
     {
         if ($request->ajax()) {
@@ -110,6 +118,8 @@ class UserController extends Controller
     {
         try {
             $user->delete();
+
+            $this->logging->info("User deleted!", ["username" => $user->username, "deleted_by" => Auth::user()->name]);
 
             return response()->json(
                 [
