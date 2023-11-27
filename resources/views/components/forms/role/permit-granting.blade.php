@@ -14,10 +14,10 @@
                     @if ($permission->group == $group_name)
                         <div class="col-sm-6 col-md-3 mb-2">
                             <div class="icheck-primary d-inline">
-                                <input type="checkbox" id="id_permission_{{ $permission->id }}" name="id_permission[]"
-                                    value="{{ $permission->name }}"
+                                <input type="checkbox" id="permission_name_{{ $permission->id }}"
+                                    name="permission_name[]" value="{{ $permission->name }}"
                                     {{ in_array($permission->id, $set_permissions) ? 'checked' : '' }} />
-                                <label for="id_permission_{{ $permission->id }}"
+                                <label for="permission_name_{{ $permission->id }}"
                                     style="font-weight: normal !important;">{{ $permission->name }}</label>
                             </div>
                         </div>

@@ -23,7 +23,7 @@ class PermitGrantingController extends Controller
     public function update(Role $role, GrantPermissionsRequest $request)
     {
         try {
-            $role->syncPermissions($request->id_permission);
+            $role->syncPermissions($request->permission_name);
 
             return response()->json(
                 [
