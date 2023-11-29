@@ -22,10 +22,10 @@ class PermissionController extends Controller
 
                     $actions = "<div class='text-right'>";
 
-                    if (Auth::user()->can('edit role')) {
+                    if (Auth::user()->can('edit-permission')) {
                         $actions .= "<a href='javascript:void(0)' class='btn btn-sm btn-secondary mb-1 mr-1 edit' title='Edit data' onclick='render(\"edit\", " . $permissions['id'] . ")' data-toggle='modal' data-target='#modalFormPermission'>Edit</a>";
                     }
-                    if (Auth::user()->can('delete role')) {
+                    if (Auth::user()->can('delete-permission')) {
                         $actions .= " <a href='javascript:void(0)' data-id='" . $permissions['id'] . "' class='btn btn-sm btn-danger mb-1 delete' title='Hapus data'><i class=' las la-times'></i></a>";
                     }
 

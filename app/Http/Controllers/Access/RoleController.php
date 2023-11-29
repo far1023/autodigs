@@ -25,13 +25,13 @@ class RoleController extends Controller
 
                     $actions = "<div class='text-right'>";
 
-                    if (Auth::user()->can('grant permit')) {
+                    if (Auth::user()->can('grant-permit')) {
                         $actions .= "<a href='javascript:void(0)' class='btn btn-sm btn-warning mb-1 mr-1 edit' title='Edit data' onclick='renderPermit(\"/" . $roles['id'] . "/grant-permit\")' data-toggle='modal' data-target='#modalFormPermitGranting'><i class='las la-lg la-key'></i></a>";
                     }
-                    if (Auth::user()->can('edit role')) {
+                    if (Auth::user()->can('edit-role')) {
                         $actions .= "<a href='javascript:void(0)' class='btn btn-sm btn-secondary mb-1 mr-1 edit' title='Edit data' onclick='render(\"edit\", " . $roles['id'] . ")' data-toggle='modal' data-target='#modalFormRole'>Edit</a>";
                     }
-                    if (Auth::user()->can('delete role')) {
+                    if (Auth::user()->can('delete-role')) {
                         $actions .= " <a href='javascript:void(0)' data-id='" . $roles['id'] . "' class='btn btn-sm btn-danger mb-1 delete' title='Hapus data'><i class=' las la-times'></i></a>";
                     }
 

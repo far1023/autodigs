@@ -18,51 +18,55 @@ class AccessSeeder extends Seeder
 	{
 		$permissions = [
 			[
-				"name" => "access control-room",
+				"name" => "show-any-role",
+				"group" => "Control Access",
+			],
+			[
+				"name" => "add-role",
 				"group" => "Control Access"
 			],
 			[
-				"name" => "add role",
+				"name" => "edit-role",
 				"group" => "Control Access"
 			],
 			[
-				"name" => "edit role",
+				"name" => "delete-role",
 				"group" => "Control Access"
 			],
 			[
-				"name" => "delete role",
+				"name" => "show-any-permission",
 				"group" => "Control Access"
 			],
 			[
-				"name" => "add permission",
+				"name" => "add-permission",
 				"group" => "Control Access"
 			],
 			[
-				"name" => "edit permission",
+				"name" => "edit-permission",
 				"group" => "Control Access"
 			],
 			[
-				"name" => "delete permission",
+				"name" => "delete-permission",
 				"group" => "Control Access"
 			],
 			[
-				"name" => "grant permission",
+				"name" => "grant-permission",
 				"group" => "Control Access"
 			],
 			[
-				"name" => "show user",
+				"name" => "show-any-user",
 				"group" => "User Section"
 			],
 			[
-				"name" => "add user",
+				"name" => "add-user",
 				"group" => "User Section"
 			],
 			[
-				"name" => "edit user",
+				"name" => "edit-user",
 				"group" => "User Section"
 			],
 			[
-				"name" => "delete user",
+				"name" => "delete-user",
 				"group" => "User Section"
 			],
 		];
