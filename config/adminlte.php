@@ -107,7 +107,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
             'alt' => 'AdminLTE Preloader Image',
@@ -310,6 +310,7 @@ return [
             'text' => 'Pengguna',
             'url'  => 'pengguna',
             'icon' => 'las la-fw la-user',
+            'can'  => 'show-any-user'
         ],
         ['header' => 'account_settings'],
         [
@@ -329,18 +330,24 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],
-        ['header' => 'Control Room'],
+        [
+            'header' => 'Control Room',
+            'can'    => ['show-any-permission', 'show-any-role'],
+        ],
         [
             'text'    => 'Access',
             'icon'    => 'las la-fw la-id-card',
+            'can'     => ['show-any-permission', 'show-any-role'],
             'submenu' => [
                 [
                     'text' => 'Permissions',
                     'url'  => 'controls/permission',
+                    'can'  => 'show-any-permission'
                 ],
                 [
                     'text' => 'Roles',
                     'url'  => 'controls/role',
+                    'can'  => 'show-any-role'
                 ],
             ],
         ]
