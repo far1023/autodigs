@@ -32,7 +32,18 @@
             drawCallback: function(settings) {
                 $('#reloadBtn').removeClass('icn-spinner');
             },
-            ajax: "{{ route('permission.index') }}",
+            ajax: {
+                url: "{{ route('permission.index') }}",
+                error: function(xhr, error, code) {
+                    $('#permissionTable_processing').hide();
+                    $('#reloadBtn').removeClass('icn-spinner');
+                    iziToast.error({
+                        title: 'Error!',
+                        message: "somthing wnet wrong, data not reloaded",
+                        position: 'topCenter'
+                    });
+                }
+            },
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex',
