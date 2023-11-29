@@ -13,7 +13,8 @@
                     class="las la-sync la-lg"></i></button>
 
             @can(['add user'])
-                <button class="btn btn-sm btn-outline-primary float-sm-right" onclick="render('tambah')" data-toggle="modal"
+                <button class="btn btn-sm btn-outline-primary float-sm-right"
+                    onclick="renderPage('{{ route('user.add') }}', 'formUserComponent')" data-toggle="modal"
                     data-target="#modalFormUser">Tambah pengguna</button>
             @endcan
         </div>
@@ -31,6 +32,7 @@
 @stop
 
 @section('js')
+    <script src="/js/render-page.js"></script>
     <script>
         $.ajaxSetup({
             headers: {
@@ -45,32 +47,5 @@
         $(document).ready(function() {
             $(".modal-footer").addClass("d-none");
         });
-
-        const render = (type, id = null) => {
-            let url = '/' + type;
-
-            if (id) {
-                url = url + '/' + id;
-            }
-
-            $(".modal-footer").html(type);
-
-            $.ajax({
-                type: "GET",
-                url: "{{ url('/pengguna') }}" + url,
-                beforeSend: function() {
-                    $("#formUserComponent").html(
-                        "<span class='spinner-border spinner-border-sm'></span> Memuat..."
-                    );
-                },
-                success: function(res) {
-                    $("#formUserComponent").html(res);
-                },
-                error: function(err) {
-                    $("#formUserComponent").html("Terjadi kesalahan")
-                    console.error(err);
-                }
-            })
-        }
     </script>
 @stop

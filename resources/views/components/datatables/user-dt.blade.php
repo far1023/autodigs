@@ -75,6 +75,10 @@
             $("#userTable").DataTable().ajax.reload(null, false);
         }
 
+        $('body').on('click', '.edit', function() {
+            renderPage($(this).data('url'), 'formUserComponent');
+        });
+
         $('body').on('click', '.delete', function() {
             if (confirm("Hapus data pengguna?")) {
                 let btn = $(this);

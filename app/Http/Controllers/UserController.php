@@ -38,7 +38,9 @@ class UserController extends Controller
                     $actions = "<div class='text-right'>";
 
                     if (Auth::user()->can('edit-user')) {
-                        $actions .= "<a href='javascript:void(0)' class='btn btn-sm btn-secondary mb-1 mr-1 edit' title='Edit data' onclick='render(\"edit\", " . $users['id'] . ")' data-toggle='modal' data-target='#modalFormUser'>Edit</a>";
+                        $url = route('user.edit', $users['id']);
+
+                        $actions .= "<a href='javascript:void(0)' class='btn btn-sm btn-secondary mb-1 mr-1 edit' title='Edit data' data-url='" . $url . "' data-toggle='modal' data-target='#modalFormUser'>Edit</a>";
                     }
                     if (Auth::user()->can('delete-user') && Auth::user()->id != $users['id']) {
                         $actions .= " <a href='javascript:void(0)' data-id='" . $users['id'] . "' class='btn btn-sm btn-danger mb-1 delete' title='Hapus data'><i class=' las la-times'></i></a>";

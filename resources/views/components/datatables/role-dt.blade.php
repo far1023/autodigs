@@ -70,6 +70,14 @@
             $("#roleTable").DataTable().ajax.reload(null, false);
         }
 
+        $('body').on('click', '.edit', function() {
+            renderPage($(this).data('url'), 'formRoleComponent');
+        });
+
+        $('body').on('click', '.grant-permissions', function() {
+            renderPage($(this).data('url'), 'formPermitGrantingComponent');
+        });
+
         $('body').on('click', '.delete', function() {
             if (confirm("Hapus data role?")) {
                 let btn = $(this);

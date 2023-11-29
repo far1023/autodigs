@@ -70,6 +70,10 @@
             $("#permissionTable").DataTable().ajax.reload(null, false);
         }
 
+        $('body').on('click', '.edit', function() {
+            renderPage($(this).data('url'), 'formPermissionComponent');
+        });
+
         $('body').on('click', '.delete', function() {
             if (confirm("Hapus data permission?")) {
                 let btn = $(this);

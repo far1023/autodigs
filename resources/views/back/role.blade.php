@@ -13,7 +13,8 @@
                     class="las la-sync la-lg"></i></button>
 
             @can(['add role'])
-                <button class="btn btn-sm btn-outline-primary float-sm-right" onclick="render('tambah')" data-toggle="modal"
+                <button class="btn btn-sm btn-outline-primary float-sm-right"
+                    onclick="renderPage('{{ route('role.add') }}', 'formRoleComponent')" data-toggle="modal"
                     data-target="#modalFormRole">Tambah role</button>
             @endcan
         </div>
@@ -35,6 +36,7 @@
 @stop
 
 @section('js')
+    <script src="/js/render-page.js"></script>
     <script>
         $.ajaxSetup({
             headers: {
@@ -53,51 +55,5 @@
         $(document).ready(function() {
             $(".modal-footer").addClass("d-none");
         });
-
-        const render = (type, id = null) => {
-            let url = '/' + type;
-
-            if (id) {
-                url = url + '/' + id;
-            }
-
-            $(".modal-footer").html(type);
-
-            $.ajax({
-                type: "GET",
-                url: "{{ url('/controls/role') }}" + url,
-                beforeSend: function() {
-                    $("#formRoleComponent").html(
-                        "<span class='spinner-border spinner-border-sm'></span> Memuat..."
-                    );
-                },
-                success: function(res) {
-                    $("#formRoleComponent").html(res);
-                },
-                error: function(err) {
-                    $("#formRoleComponent").html("Terjadi kesalahan")
-                    console.error(err);
-                }
-            })
-        }
-
-        const renderPermit = (url) => {
-            $.ajax({
-                type: "GET",
-                url: "{{ url('/controls/role') }}" + url,
-                beforeSend: function() {
-                    $("#formPermitGrantingComponent").html(
-                        "<span class='spinner-border spinner-border-sm'></span> Memuat..."
-                    );
-                },
-                success: function(res) {
-                    $("#formPermitGrantingComponent").html(res);
-                },
-                error: function(err) {
-                    $("#formPermitGrantingComponent").html("Terjadi kesalahan")
-                    console.error(err);
-                }
-            })
-        }
     </script>
 @stop
