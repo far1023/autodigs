@@ -44,8 +44,8 @@
             }
         });
 
-        $("#modalFormUser").on('hide.bs.modal', function() {
-            $("#formRoleComponent").html("");
+        $("#modalFormRole").on('hide.bs.modal', function() {
+            setTimeout($("#formRoleComponent").html(""), 500);
         });
 
         $("#modalFormPermitGranting").on('hide.bs.modal', function() {

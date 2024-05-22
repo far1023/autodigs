@@ -41,7 +41,7 @@
         });
 
         $("#modalFormUser").on('hide.bs.modal', function() {
-            $("#formUserComponent").html("");
+            setTimeout($("#formUserComponent").html(""), 500);
         });
 
         $(document).ready(function() {

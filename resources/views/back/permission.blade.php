@@ -40,8 +40,8 @@
             }
         });
 
-        $("#modalFormUser").on('hide.bs.modal', function() {
-            $("#formPermissionComponent").html("");
+        $("#modalFormPermission").on('hide.bs.modal', function() {
+            setTimeout($("#formPermissionComponent").html(""), 500);
         });
 
         $(document).ready(function() {
