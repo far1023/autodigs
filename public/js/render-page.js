@@ -4,7 +4,7 @@ const renderPage = (url, containerID) => {
         url: url,
         beforeSend: function () {
             $("#" + containerID).html(
-                "<span class='spinner-border spinner-border-sm'></span> Memuat..."
+                "<div class='text-center'><span class='spinner-border spinner-border-sm'></span> Memuat...</div>"
             );
         },
         success: function (res) {
