@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Permission;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUserRequest extends FormRequest
+class StorePermissionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return Auth::user()->can('add user');
+        return Auth::user()->can('add permission');
     }
 
     /**
@@ -23,12 +23,8 @@ class StoreUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required'],
-            'username' => ['required', 'max:255', 'unique:users,username'],
-            'email' => ['required', 'unique:users,email'],
-            'password' => ['required', 'min:8', 'confirmed'],
-            'password_confirmation' => ['required'],
-
+            "name" => ["required", "unique:roles"],
+            "group" => ["required"],
         ];
     }
 }

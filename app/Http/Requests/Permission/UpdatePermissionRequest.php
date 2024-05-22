@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Permission;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
-class GrantPermissionsRequest extends FormRequest
+class UpdatePermissionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return Auth::user()->can('grant permission');
+        return Auth::user()->can('edit permssion');
     }
 
     /**
@@ -23,7 +23,8 @@ class GrantPermissionsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name" => ["required"],
+            "name" => ["required", "unique:permissions,name," . $this->id],
+            "group" => ["required"],
         ];
     }
 }

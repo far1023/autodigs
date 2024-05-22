@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Role;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRoleRequest extends FormRequest
+class UpdateRoleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return Auth::user()->can('add role');
+        return Auth::user()->can('edit role');
     }
 
     /**
@@ -23,7 +23,7 @@ class StoreRoleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name" => ["required", "unique:roles"],
+            "name" => ["required", "unique:roles,name," . $this->id],
         ];
     }
 }

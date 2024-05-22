@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Access;
 
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\GrantPermissionsRequest;
+use App\Http\Requests\Permission\GrantPermissionsRequest;
 use Spatie\Permission\Models\Permission;
 
 class PermitGrantingController extends Controller
