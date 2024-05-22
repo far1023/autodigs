@@ -27,7 +27,7 @@
         @endforeach
 
         <div class="mt-5">
-            <button type="button" class="btn btn-sm btn-outline-danger px-4 cta" data-dismiss="modal">batalkan</button>
+            {{-- <button type="button" class="btn btn-sm btn-outline-danger px-4 cta" data-dismiss="modal">batalkan</button> --}}
             <button type="submit" class="btn btn-sm btn-primary px-4 cta float-right" id="saveBtn">Grant
                 Permissions</button>
         </div>
@@ -61,6 +61,8 @@
                         message: res.message,
                         position: "topCenter"
                     });
+
+                    reloadDT();
                 } else {
                     iziToast.error({
                         title: 'Error!',
