@@ -7,7 +7,7 @@
             <small class="text-danger err-msg" id="name_error"></small>
         </div>
         <div class="mt-5">
-            <button type="button" class="btn btn-sm btn-outline-danger px-4 cta" data-dismiss="modal">batalkan</button>
+            <button type="button" class="btn btn-sm btn-outline-danger px-4 cta" data-dismiss="modal">Batalkan</button>
             <button type="submit" class="btn btn-sm btn-primary px-4 cta float-right" id="saveBtn">Tambahkan
                 role</button>
         </div>
@@ -40,6 +40,10 @@
                         message: res.message,
                         position: "topCenter"
                     });
+
+                    reloadDT();
+
+                    $("#modalFormRole").modal("hide");
                 } else {
                     iziToast.error({
                         title: 'Error!',
