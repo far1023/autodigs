@@ -14,7 +14,5 @@
 @stop
 
 @section('js')
-    <script>
-        
-    </script>
+    <script></script>
 @stop
