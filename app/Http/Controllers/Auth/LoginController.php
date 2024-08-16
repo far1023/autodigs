@@ -17,19 +17,33 @@ class LoginController extends Controller
         $this->logging = Log::channel('file');
     }
 
-    public function run(LoginRequest $request)
+    public function attempt(LoginRequest $request)
     {
-        if (User::where('username', $request->username)->first()) {
+        try {
             if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
                 $request->session()->regenerate();
-                return redirect()->intended('beranda');
+                return response()->json(
+                    [
+                        "code" => 200,
+                        "message" => "Login berhasil",
+                        "redirect" => route('beranda')
+                    ],
+                    200
+                );
             }
+
+            return response()->json(
+                [
+                    "code" => 401,
+                    "message" => "Nama pengguna atau kata sandi salah"
+                ],
+                401
+            );
+        } catch (\Throwable $th) {
+            return response()->json(
+                ["message" => $th->getMessage()],
+                500
+            );
         }
-
-        $this->logging->info("Failed login attempt", ["username" => $request->username]);
-
-        return back()->with([
-            'loginError' => 'Nama pengguna atau kata sandi salah',
-        ])->withInput();
     }
 }

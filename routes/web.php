@@ -37,7 +37,7 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::post('/login', [LoginController::class, 'run'])->name('run.login');
+Route::post('/login', [LoginController::class, 'attempt'])->name('login.attempt');
 Route::post('/logout', [LogoutController::class, 'run'])->name('user.logout');
 
 Route::middleware('auth')->group(function () {
@@ -78,5 +78,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/', 'store')->middleware('can:add-user')->name('user.store');
         Route::patch('/{user}', 'update')->middleware('can:edit-user')->name('user.update');
         Route::delete('/{user}', 'delete')->middleware('can:delete-user')->name('user.delete');
+
+        Route::get('/{id}/assign-role', 'edit')->name('role.show-role');
+        Route::patch('/{user}/assign-role', 'update')->name('role.assign-role');
     });
 });
