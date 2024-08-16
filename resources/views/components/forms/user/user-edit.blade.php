@@ -3,17 +3,17 @@
         @csrf
         <input type="hidden" class="d-none" name="id" id="id" value="{{ $user->id }}">
         <div class="form-group">
-            <label for="name">Nama Pengguna</label>
+            <label class="text-sm" for="name">Nama Pengguna</label>
             <input type="text" class="form-control" name="name" id="name" value="{{ $user->name }}">
             <small class="text-danger err-msg" id="name_error"></small>
         </div>
         <div class="form-group">
-            <label for="username">Username</label>
+            <label class="text-sm" for="username">Username</label>
             <input type="text" class="form-control" name="username" id="username" value="{{ $user->username }}">
             <small class="text-danger err-msg" id="username_error"></small>
         </div>
         <div class="form-group">
-            <label for="email">Email</label>
+            <label class="text-sm" for="email">Email</label>
             <input type="text" class="form-control" name="email" id="email" value="{{ $user->email }}">
             <small class="text-danger err-msg" id="email_error"></small>
         </div>

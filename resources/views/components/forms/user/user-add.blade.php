@@ -2,34 +2,33 @@
     <form id="formAddUser" class="p-0">
         @csrf
         <div class="form-group">
-            <label for="name">Nama Pengguna</label>
+            <label class="text-sm" for="name">Nama Pengguna</label>
             <input type="text" class="form-control" name="name" id="name">
             <small class="text-danger err-msg" id="name_error"></small>
         </div>
         <div class="form-group">
-            <label for="username">Username</label>
+            <label class="text-sm" for="username">Username</label>
             <input type="text" class="form-control" name="username" id="username">
             <small class="text-danger err-msg" id="username_error"></small>
         </div>
         <div class="form-group">
-            <label for="email">Email</label>
+            <label class="text-sm" for="email">Email</label>
             <input type="text" class="form-control" name="email" id="email">
             <small class="text-danger err-msg" id="email_error"></small>
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
+            <label class="text-sm" for="password">Password</label>
             <input type="password" class="form-control" name="password" id="password">
             <small class="text-danger err-msg" id="password_error"></small>
         </div>
         <div class="form-group">
-            <label for="password_confirmation">Konfirmasi Password</label>
+            <label class="text-sm" for="password_confirmation">Konfirmasi Password</label>
             <input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
             <small class="text-danger err-msg" id="password_confirmation_error"></small>
         </div>
-        <div class="mt-5">
-            <button type="button" class="btn btn-sm btn-outline-danger px-4 cta" data-dismiss="modal">Batalkan</button>
-            <button type="submit" class="btn btn-sm btn-primary px-4 cta float-right" id="saveBtn">Tambahkan
-                pengguna</button>
+        <div class="mt-5 float-right">
+            <button type="button" class="btn btn-sm px-3 cta" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-sm btn-success px-4 cta" id="saveBtn">Add User</button>
         </div>
     </form>
 </div>
@@ -73,11 +72,11 @@
                 }
 
                 $(".cta").attr("disabled", false);
-                $('#saveBtn').html('Tambahkan pengguna');
+                $('#saveBtn').html('Add User');
             },
             error: function(res) {
                 $(".cta").attr("disabled", false);
-                $('#saveBtn').html('Tambahkan pengguna');
+                $('#saveBtn').html('Add User');
 
                 iziToast.error({
                     title: 'Error!',

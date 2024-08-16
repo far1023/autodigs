@@ -3,24 +3,20 @@
 @section('title', 'User list')
 
 @section('content_header')
-    <h1>User</h1>
+    <div>
+        <button onclick="reloadDT(this)" id="reloadBtn" class="btn btn-sm"><i class="las la-sync la-lg"></i></button><span
+            class="text-lg">User</span>
+
+        @can(['add user'])
+            <button class="btn btn-sm px-4 btn-success float-sm-right"
+                onclick="renderPage('{{ route('user.add') }}', 'formUserComponent')" data-toggle="modal"
+                data-target="#modalFormUser">Add User</button>
+        @endcan
+    </div>
 @stop
 
 @section('content')
-    <x-adminlte-card body-class="px-0" theme-mode="outline">
-        <div class="px-3 mb-5">
-            <button onclick="reloadDT(this)" id="reloadBtn" class="btn btn-sm ml-2 float-sm-right"><i
-                    class="las la-sync la-lg"></i></button>
-
-            @can(['add user'])
-                <button class="btn btn-sm btn-outline-primary float-sm-right"
-                    onclick="renderPage('{{ route('user.add') }}', 'formUserComponent')" data-toggle="modal"
-                    data-target="#modalFormUser">Tambah pengguna</button>
-            @endcan
-        </div>
-
-        <x-datatables.user-dt />
-    </x-adminlte-card>
+    <x-datatables.user-dt />
 
     <x-adminlte-modal id="modalFormUser">
         <div id="formUserComponent" class="pb-2"></div>
