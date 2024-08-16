@@ -1,5 +1,5 @@
-<div>
-    <table class="table table-striped table-hover dttables" id="roleTable">
+<div class="table-responsive">
+    <table class="table table-hover" id="roleTable">
         <thead class="text-xs text-gray">
             <tr>
                 <th>#</th>
@@ -16,13 +16,13 @@
 @push('js')
     <script>
         $('#roleTable').DataTable({
+            lengthChange: false,
+            searching: false,
+            info: true,
+            paging: true,
+            autoWidth: false,
             bDestroy: true,
             aaSorting: [],
-            paging: true,
-            lengthChange: false,
-            searching: true,
-            info: false,
-            autoWidth: false,
             processing: true,
             serverSide: true,
             columnDefs: [{
@@ -39,7 +39,7 @@
                     $('#reloadBtn').removeClass('icn-spinner');
                     iziToast.error({
                         title: 'Error!',
-                        message: "somthing wnet wrong, data not reloaded",
+                        message: "somthing wnet wrong, data not loaded",
                         position: 'topCenter'
                     });
                 }
