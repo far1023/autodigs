@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 
@@ -17,7 +19,7 @@ class DatabaseSeeder extends Seeder
 
         Role::firstOrCreate(['name' => 'super-admin']);
 
-        \App\Models\User::create([
+        User::create([
             'name' => 'Administrator',
             'username' => 'far1023',
             'email' => 'far@mail.com',
@@ -28,6 +30,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             AccessSeeder::class,
+            VehicleBrandSeeder::class,
+            VehicleTypeSeeder::class,
+            VehicleUnitSeeder::class,
         ]);
     }
 }
