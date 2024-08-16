@@ -63,12 +63,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>AUTO</b>digs',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+    'logo_img_alt' => 'Autodigs logo',
 
     /*
     |--------------------------------------------------------------------------
@@ -131,10 +131,10 @@ return [
 
     'usermenu_enabled' => true,
     'usermenu_header' => false,
-    'usermenu_header_class' => 'bg-primary',
+    'usermenu_header_class' => '',
     'usermenu_image' => false,
     'usermenu_desc' => false,
-    'usermenu_profile_url' => false,
+    'usermenu_profile_url' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -172,7 +172,7 @@ return [
     'classes_auth_body' => '',
     'classes_auth_footer' => '',
     'classes_auth_icon' => '',
-    'classes_auth_btn' => 'btn-flat btn-primary',
+    'classes_auth_btn' => 'btn-primary',
 
     /*
     |--------------------------------------------------------------------------
@@ -189,10 +189,10 @@ return [
     'classes_body' => '',
     'classes_brand' => '',
     'classes_brand_text' => '',
-    'classes_content_wrapper' => '',
+    'classes_content_wrapper' => 'bg-white',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary',
+    'classes_sidebar' => 'sidebar-light-dark bg-light',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -312,45 +312,49 @@ return [
             'icon' => 'las la-fw la-user',
             'can'  => 'show-any-user'
         ],
-        ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'las la-fw la-user',
+            'header' => 'Vehicle Management',
+            'can'    => ['show-any-fleet'],
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'las la-fw la-lock',
-        ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'las la-fw la-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text' => 'My Vehicle',
+            'url'  => 'my-vehicle',
+            'icon' => 'la la-fw la-automobile',
+            'can'  => 'show-any-vehicle'
         ],
         [
             'header' => 'Control Room',
             'can'    => ['show-any-permission', 'show-any-role'],
         ],
+        // [
+        //     'text'    => 'Access',
+        //     'icon'    => 'las la-fw la-id-card',
+        //     'can'     => ['show-any-permission', 'show-any-role'],
+        //     'submenu' => [
+        //         [
+        //             'text' => 'Permissions',
+        //             'url'  => 'controls/permission',
+        //             'can'  => 'show-any-permission'
+        //         ],
+        //         [
+        //             'text' => 'Roles',
+        //             'url'  => 'controls/role',
+        //             'can'  => 'show-any-role'
+        //         ],
+        //     ],
+        // ],
         [
-            'text'    => 'Access',
-            'icon'    => 'las la-fw la-id-card',
-            'can'     => ['show-any-permission', 'show-any-role'],
-            'submenu' => [
-                [
-                    'text' => 'Permissions',
-                    'url'  => 'controls/permission',
-                    'can'  => 'show-any-permission'
-                ],
-                [
-                    'text' => 'Roles',
-                    'url'  => 'controls/role',
-                    'can'  => 'show-any-role'
-                ],
-            ],
-        ]
+            'text' => 'Permissions',
+            'url'  => 'controls/permission',
+            'icon' => 'la la-fw la-certificate',
+            'can'  => 'show-any-permission'
+        ],
+        [
+            'text' => 'Roles',
+            'url'  => 'controls/role',
+            'icon' => 'la la-fw la-id-card',
+            'can'  => 'show-any-role'
+        ],
     ],
 
     /*
