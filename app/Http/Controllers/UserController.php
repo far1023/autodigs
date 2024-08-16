@@ -37,13 +37,18 @@ class UserController extends Controller
 
                     $actions = "<div class='text-right'>";
 
+                    if (Auth::user()->can('assign-role')) {
+                        $url = route('role.show-role', $users['id']);
+
+                        $actions .= "<a href='javascript:void(0)' class='btn btn-xs btn-warning mb-1 mr-1 grant-permissions' title='Granted permissions'  data-url='" . $url . "' data-toggle='modal' data-target='#modalFormPermitGranting'><i class='las la-lg la-key'></i></a>";
+                    }
                     if (Auth::user()->can('edit-user')) {
                         $url = route('user.edit', $users['id']);
 
-                        $actions .= "<a href='javascript:void(0)' class='btn btn-sm btn-secondary mb-1 mr-1 edit' title='Edit data' data-url='" . $url . "' data-toggle='modal' data-target='#modalFormUser'>Edit</a>";
+                        $actions .= "<a href='javascript:void(0)' class='btn btn-xs btn-secondary mb-1 mr-1 edit' title='Edit data' data-url='" . $url . "' data-toggle='modal' data-target='#modalFormUser'>Edit</a>";
                     }
                     if (Auth::user()->can('delete-user') && Auth::user()->id != $users['id']) {
-                        $actions .= " <a href='javascript:void(0)' data-id='" . $users['id'] . "' class='btn btn-sm btn-danger mb-1 delete' title='Hapus data'><i class=' las la-times'></i></a>";
+                        $actions .= " <a href='javascript:void(0)' data-id='" . $users['id'] . "' class='btn btn-xs btn-danger mb-1 delete' title='Hapus data'><i class=' las la-times'></i></a>";
                     }
 
                     return $actions .= "</div>";
